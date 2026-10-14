@@ -631,6 +631,10 @@ for (const b of Object.values(data)) {
 const raw = Array.isArray(b.photos) && b.photos.length ? b.photos : (b.photo ? [b.photo] : []);
 b.photos = raw.map(p => typeof p === 'string' ? { url: p } : p).filter(p => p && p.url);
 b.photo = b.photos[0]?.url;
+/* countries may be a string ("Norway"), "Norway, Sweden", or an array: always make it an array */
+b.countries = Array.isArray(b.countries) ? b.countries
+  : typeof b.countries === 'string' ? b.countries.split(/[,;]/).map(s => s.trim()).filter(Boolean)
+  : [];
 }
 return data;
 }
