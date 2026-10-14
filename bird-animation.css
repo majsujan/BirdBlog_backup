@@ -1,4 +1,0 @@
-/* BirdBlog flight overlay. Does not change existing header layout. */
-#bb-flight-bird { position: fixed; left: 0; top: 0; width: var(--bb-bird-size, 34px); height: auto; z-index: 9999; pointer-events: none; opacity: 0; transform-origin: 50% 50%; will-change: transform, opacity; }
-#bb-flight-bird.bb-visible { opacity: 1; }
-@media (prefers-reduced-motion: reduce) { #bb-flight-bird { display: none !important; } }
