@@ -93,7 +93,7 @@
     ]
   },
   "Asian Fairy-bluebird": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Bangladesh"
     ]
@@ -198,12 +198,14 @@
     "photo": "https://ik.imagekit.io/majsujan/birdblog/barn-swallow.jpg",
     "countries": [
       "Aruba",
+      "Bangladesh",
       "Belgium",
       "Czech Republic",
       "Denmark",
       "Estonia",
       "Germany",
       "Greece",
+      "Italy",
       "Netherlands",
       "Norway",
       "Thailand",
@@ -229,7 +231,7 @@
     ]
   },
   "Bearded Reedling": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Denmark"
     ]
@@ -247,7 +249,7 @@
     ]
   },
   "Black Baza": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Thailand"
     ]
@@ -281,6 +283,7 @@
   "Black Redstart": {
     "photo": "https://ik.imagekit.io/majsujan/birdblog/black-redstart.jpg",
     "countries": [
+      "Italy",
       "Netherlands"
     ]
   },
@@ -348,14 +351,13 @@
   "Black-headed Gull": {
     "photo": "https://ik.imagekit.io/majsujan/birdblog/black-headed-gull.jpg",
     "countries": [
-      "Belgium",
       "Denmark",
       "Estonia",
-      "Latvia",
-      "Norway",
-      "Netherlands",
-      "Sweden",
       "Finland",
+      "Latvia",
+      "Netherlands",
+      "Norway",
+      "Sweden",
       "United Kingdom"
     ]
   },
@@ -372,7 +374,7 @@
     ]
   },
   "Black-legged Kittiwake": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Norway"
     ]
@@ -425,7 +427,7 @@
     ]
   },
   "Blossom-headed Parakeet": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Bangladesh"
     ]
@@ -544,7 +546,7 @@
     ]
   },
   "Brant": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Denmark"
     ]
@@ -563,7 +565,7 @@
     ]
   },
   "Brown Boobook": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Bangladesh"
     ]
@@ -652,14 +654,15 @@
     ]
   },
   "Caspian Tern": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Netherlands"
     ]
   },
   "Cetti's Warbler": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
+      "Italy",
       "Netherlands"
     ]
   },
@@ -731,7 +734,7 @@
     ]
   },
   "Collared Scops-Owl": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Bangladesh"
     ]
@@ -742,6 +745,7 @@
       "Denmark",
       "Estonia",
       "Germany",
+      "Italy",
       "Netherlands",
       "Norway",
       "Sweden",
@@ -756,6 +760,7 @@
       "Estonia",
       "Finland",
       "Germany",
+      "Italy",
       "Latvia",
       "Netherlands",
       "Norway"
@@ -767,6 +772,7 @@
       "Belgium",
       "Denmark",
       "Germany",
+      "Italy",
       "Netherlands",
       "Norway",
       "Sweden",
@@ -830,7 +836,7 @@
     ]
   },
   "Common Grasshopper Warbler": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Denmark"
     ]
@@ -904,7 +910,7 @@
     ]
   },
   "Common Loon": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Norway"
     ]
@@ -919,7 +925,7 @@
     ]
   },
   "Common Murre": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Norway"
     ]
@@ -941,7 +947,7 @@
     ]
   },
   "Common Quail": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Norway"
     ]
@@ -992,7 +998,7 @@
     ]
   },
   "Common Rosefinch": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Denmark"
     ]
@@ -1044,8 +1050,9 @@
       "Germany",
       "Greece",
       "Italy",
+      "Netherlands",
       "Norway",
-      "Netherlands"
+      "Sweden"
     ]
   },
   "Common Tailorbird": {
@@ -1099,7 +1106,7 @@
     ]
   },
   "Corn Bunting": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Denmark"
     ]
@@ -1111,7 +1118,7 @@
     ]
   },
   "Crested Bobwhite": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Curaçao"
     ]
@@ -1236,7 +1243,7 @@
     ]
   },
   "Eurasian Bittern": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Estonia"
     ]
@@ -1246,26 +1253,26 @@
     "countries": [
       "Belgium",
       "Denmark",
+      "Estonia",
+      "Finland",
       "Germany",
       "Greece",
       "Italy",
       "Latvia",
       "Netherlands",
       "Norway",
-      "Sweden",
-      "Estonia",
-      "Finland"
+      "Sweden"
     ]
   },
   "Eurasian Blackcap": {
     "photo": "https://ik.imagekit.io/majsujan/birdblog/eurasian-blackcap.jpg",
     "countries": [
       "Denmark",
+      "Estonia",
       "Germany",
       "Italy",
       "Netherlands",
-      "Norway",
-      "Estonia"
+      "Norway"
     ]
   },
   "Eurasian Blue Tit": {
@@ -1319,7 +1326,7 @@
     ]
   },
   "Eurasian Crag-Martin": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Italy"
     ]
@@ -1334,7 +1341,7 @@
     ]
   },
   "Eurasian Goshawk": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Netherlands",
       "Norway",
@@ -1342,7 +1349,7 @@
     ]
   },
   "Eurasian Green Woodpecker": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Germany",
       "Italy",
@@ -1357,7 +1364,6 @@
   },
   "Eurasian Jackdaw": {
     "photos": [
-      "https://ik.imagekit.io/majsujan/birdblog/eurasian-jackdaw.jpg",
       "https://ik.imagekit.io/majsujan/birdblog/eurasian-jackdaw.jpg",
       "https://ik.imagekit.io/majsujan/birdblog/eurasian-jackdaw-2.jpg"
     ],
@@ -1449,7 +1455,7 @@
     ]
   },
   "Eurasian Penduline-Tit": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Estonia"
     ]
@@ -1515,7 +1521,7 @@
     ]
   },
   "Eurasian Whimbrel": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Netherlands",
       "Norway"
@@ -1577,8 +1583,8 @@
     "photo": "https://ik.imagekit.io/majsujan/birdblog/european-greenfinch.jpg",
     "countries": [
       "Denmark",
-      "Finland",
       "Estonia",
+      "Finland",
       "Netherlands",
       "Norway",
       "Sweden"
@@ -1591,6 +1597,7 @@
       "Denmark",
       "Estonia",
       "Finland",
+      "Germany",
       "Latvia",
       "Netherlands",
       "Norway",
@@ -1640,6 +1647,7 @@
     "countries": [
       "Denmark",
       "Estonia",
+      "Italy",
       "Latvia",
       "Netherlands",
       "Norway",
@@ -1649,6 +1657,7 @@
   "European Stonechat": {
     "photo": "https://ik.imagekit.io/majsujan/birdblog/european-stonechat.jpg",
     "countries": [
+      "Denmark",
       "Italy",
       "Netherlands"
     ]
@@ -1706,7 +1715,7 @@
     ]
   },
   "Garden Warbler": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Denmark",
       "Estonia",
@@ -1843,7 +1852,7 @@
     ]
   },
   "Gray-throated Martin": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Bangladesh"
     ]
@@ -1886,8 +1895,8 @@
       "Italy",
       "Netherlands",
       "Norway",
-      "Sweden",
       "Poland",
+      "Sweden",
       "United Kingdom"
     ]
   },
@@ -1932,13 +1941,13 @@
     ]
   },
   "Great Skua": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Norway"
     ]
   },
   "Great Snipe": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Norway"
     ]
@@ -1970,7 +1979,7 @@
     ]
   },
   "Great-tailed Grackle": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Aruba"
     ]
@@ -1989,7 +1998,7 @@
     ]
   },
   "Greater Painted-Snipe": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Bangladesh"
     ]
@@ -2103,7 +2112,7 @@
     ]
   },
   "Hawfinch": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Norway"
     ]
@@ -2171,8 +2180,8 @@
     ],
     "countries": [
       "Aruba",
-      "Curaçao",
       "Bangladesh",
+      "Curaçao",
       "Denmark",
       "Estonia",
       "Finland",
@@ -2217,13 +2226,13 @@
     ]
   },
   "Indian Cormorant": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Thailand"
     ]
   },
   "Indian Cuckoo": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Thailand"
     ]
@@ -2254,7 +2263,7 @@
     ]
   },
   "Italian Sparrow": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Italy"
     ]
@@ -2272,7 +2281,7 @@
     ]
   },
   "Jerdon's Baza": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Thailand"
     ]
@@ -2344,7 +2353,7 @@
     ]
   },
   "Lesser Necklaced Laughingthrush": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Bangladesh",
       "Thailand"
@@ -2375,7 +2384,7 @@
     ]
   },
   "Lesser Whitethroat": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Denmark",
       "Italy",
@@ -2425,6 +2434,7 @@
     "countries": [
       "Italy",
       "Netherlands",
+      "Norway",
       "Sweden"
     ]
   },
@@ -2462,7 +2472,7 @@
     ]
   },
   "Long-eared Owl": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Norway"
     ]
@@ -2506,7 +2516,7 @@
     ]
   },
   "Malaysian Pied-Fantail": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Thailand"
     ]
@@ -2555,7 +2565,7 @@
     ]
   },
   "Medium Egret": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Bangladesh"
     ]
@@ -2568,7 +2578,7 @@
     ]
   },
   "Middle Spotted Woodpecker": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Netherlands"
     ]
@@ -2616,9 +2626,9 @@
       "Italy",
       "Netherlands",
       "Norway",
+      "Poland",
       "Sweden",
-      "United Kingdom",
-      "Poland"
+      "United Kingdom"
     ]
   },
   "Neotropic Cormorant": {
@@ -2758,8 +2768,8 @@
     "photo": "https://ik.imagekit.io/majsujan/birdblog/osprey.jpg",
     "countries": [
       "Aruba",
-      "Curaçao",
       "Bangladesh",
+      "Curaçao",
       "Denmark"
     ]
   },
@@ -2783,7 +2793,7 @@
     ]
   },
   "Pale-billed Flowerpecker": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/osprey.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Bangladesh"
     ]
@@ -2801,7 +2811,7 @@
     ]
   },
   "Pallid Swift": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Greece"
     ]
@@ -2822,8 +2832,8 @@
     "photo": "https://ik.imagekit.io/majsujan/birdblog/peregrine-falcon.jpg",
     "countries": [
       "Aruba",
-      "Curaçao",
       "Bangladesh",
+      "Curaçao",
       "Netherlands",
       "Norway"
     ]
@@ -2856,7 +2866,7 @@
     ]
   },
   "Pine Grosbeak": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Norway"
     ]
@@ -2900,7 +2910,6 @@
   "Puff-throated Babbler": {
     "photo": "https://ik.imagekit.io/majsujan/birdblog/puff-throated-babbler.jpg",
     "countries": [
-      "Bangladesh",
       "Thailand"
     ]
   },
@@ -2926,7 +2935,7 @@
     ]
   },
   "Rain Quail": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Thailand"
     ]
@@ -2991,7 +3000,7 @@
     ]
   },
   "Red-eyed Vireo": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Curaçao"
     ]
@@ -3047,8 +3056,8 @@
     "photo": "https://ik.imagekit.io/majsujan/birdblog/redwing.jpg",
     "countries": [
       "Denmark",
-      "Norway",
       "Netherlands",
+      "Norway",
       "Sweden"
     ]
   },
@@ -3068,7 +3077,7 @@
     ]
   },
   "Ring Ouzel": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Norway"
     ]
@@ -3086,7 +3095,7 @@
     ]
   },
   "River Lapwing": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Bangladesh"
     ]
@@ -3095,8 +3104,8 @@
     "photo": "https://ik.imagekit.io/majsujan/birdblog/rock-pigeon.jpg",
     "countries": [
       "Aruba",
-      "Curaçao",
       "Bangladesh",
+      "Curaçao",
       "Denmark",
       "Estonia",
       "Finland",
@@ -3212,13 +3221,13 @@
     ]
   },
   "Rufous Woodpecker": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Bangladesh"
     ]
   },
   "Rufous-bellied Niltava": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Bangladesh"
     ]
@@ -3230,7 +3239,7 @@
     ]
   },
   "Rufous-gorgeted Flycatcher": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Bangladesh"
     ]
@@ -3267,7 +3276,7 @@
     ]
   },
   "Savi's Warbler": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Netherlands"
     ]
@@ -3280,7 +3289,7 @@
     ]
   },
   "Scaly-naped Pigeon": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Curaçao"
     ]
@@ -3308,7 +3317,7 @@
     ]
   },
   "Shikra": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Bangladesh",
       "Thailand"
@@ -3377,7 +3386,7 @@
     ]
   },
   "Silver-backed Needletail": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Thailand"
     ]
@@ -3424,7 +3433,7 @@
     ]
   },
   "Spotted Crake": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Norway"
     ]
@@ -3452,7 +3461,7 @@
     ]
   },
   "Spotted Redshank": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Norway"
     ]
@@ -3527,7 +3536,7 @@
     ]
   },
   "Tawny Owl": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Norway"
     ]
@@ -3540,7 +3549,7 @@
     ]
   },
   "Thick-billed Green-Pigeon": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Thailand"
     ]
@@ -3552,7 +3561,7 @@
     ]
   },
   "Thrush Nightingale": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Denmark"
     ]
@@ -3641,7 +3650,7 @@
     ]
   },
   "Vernal Hanging-Parrot": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Bangladesh"
     ]
@@ -3661,7 +3670,7 @@
     ]
   },
   "Western Cattle-Egret": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Curaçao"
     ]
@@ -3706,7 +3715,7 @@
     ]
   },
   "Whiskered Tern": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Thailand"
     ]
@@ -3723,6 +3732,7 @@
   "White Wagtail": {
     "photo": "https://ik.imagekit.io/majsujan/birdblog/white-wagtail.jpg",
     "countries": [
+      "Bangladesh",
       "Belgium",
       "Denmark",
       "Estonia",
@@ -3833,7 +3843,7 @@
     ]
   },
   "White-tipped Dove": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Aruba",
       "Curaçao"
@@ -3916,7 +3926,7 @@
     ]
   },
   "Yellow-billed Loon": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Norway"
     ]
@@ -3966,7 +3976,7 @@
     ]
   },
   "Yellow-wattled Lapwing": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Bangladesh"
     ]
@@ -4005,7 +4015,7 @@
     ]
   },
   "Graylag x Canada Goose (hybrid)": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-fairy-bluebird.jpg",
+    "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Netherlands"
     ]
