@@ -1572,7 +1572,7 @@ sync();
 /* BirdBlog flight overlay. Does not change existing header layout. */
 #bb-flight-bird { position: fixed; left: 0; top: 0; width: var(--bb-bird-size, 34px); height: auto; z-index: 9999; pointer-events: none; opacity: 0; transform-origin: 50% 50%; will-change: transform, opacity; }
 #bb-flight-bird.bb-visible { opacity: 1; }
-@media (prefers-reduced-motion: reduce) { #bb-flight-bird { display: none !important; } }
+/* Preview mode: fly automatically, including when reduced motion is enabled. */
 
 </style>
 <script>
@@ -1582,7 +1582,7 @@ sync();
   const CONFIG = {
     logoSelector: '.site-title', // existing logo wrapper; change if needed
     headerSelector: 'header',
-    homeX: 0.78, // fraction of logo width: centre of the O
+    homeX: 0.18, // fraction of logo width: centre of the O
     homeY: 0.50, // fraction of logo height
     birdSize: 34,
     flightMs: 6000,
@@ -1593,7 +1593,7 @@ sync();
     const logo = document.querySelector(CONFIG.logoSelector);
     const header = document.querySelector(CONFIG.headerSelector);
     if (!logo || !header) { console.warn('[BirdBlog] Logo/header not found; update selectors in bird-animation.js'); return; }
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    // Preview mode: allow the flight regardless of reduced-motion preferences.
     const bird = document.createElement('img');
     bird.id = 'bb-flight-bird'; bird.alt = ''; bird.setAttribute('aria-hidden', 'true');
     bird.src = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgODAiPgogPGcgc3Ryb2tlPSIjMjAyYTMxIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogIDxwYXRoIGQ9Ik01NSA0MCBRNzAgMTEgOTMgNyBRODggMzQgNjQgNDkiIGZpbGw9IiM1NjYxNmEiLz4KICA8cGF0aCBkPSJNNTQgNDEgUTQwIDkgMjQgMyBRMjMgMjggNDMgNTAiIGZpbGw9IiM3MzdiODAiLz4KICA8cGF0aCBkPSJNNjEgNDggTDk0IDcyIEw3MiA1OSIgZmlsbD0iIzM0M2I0MiIvPgogIDxlbGxpcHNlIGN4PSI1MSIgY3k9IjQ2IiByeD0iMjQiIHJ5PSIxNSIgZmlsbD0iI2I4YjhiMCIvPgogIDxwYXRoIGQ9Ik0zNSAzNyBRNTAgMjcgNzIgNDcgUTYxIDQzIDQ4IDU4IiBmaWxsPSIjMzUzZTQ4Ii8+CiAgPGNpcmNsZSBjeD0iMzEiIGN5PSIzOCIgcj0iMTIiIGZpbGw9IiMyNTJjMzQiLz4KICA8cGF0aCBkPSJNMjIgMzQgUTMyIDIxIDQzIDMzIEw0MCAzNyBRMzEgMzEgMjIgMzciIGZpbGw9IiNlNDVhMjQiIHN0cm9rZT0ibm9uZSIvPgogIDxwYXRoIGQ9Ik0yMCAzOSBMNSA0MyBMMjAgNDUiIGZpbGw9IiMyZDM0M2MiLz4KICA8Y2lyY2xlIGN4PSIyNyIgY3k9IjM4IiByPSIyIiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSJub25lIi8+CiA8L2c+Cjwvc3ZnPgo=';
