@@ -40,7 +40,11 @@
   },
 
   "Arctic Tern": {
-    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788610524/xhIrClt_-_Imgur_jhvqua.jpg",
+    "photos": [
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1791151054/DSC_0731-2_ixggcy.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788610524/xhIrClt_-_Imgur_jhvqua.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1791151106/DSC_0704_tqnduq.jpg"
+    ],
     "countries": ["Norway"]
   },
 
@@ -80,7 +84,10 @@
   },
 
   "Asian Green Bee-eater": {
-    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1782471540/1_-_rinr6Zc_cvo7ug.jpg",
+    "photos": [
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1782471540/1_-_rinr6Zc_cvo7ug.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788611186/10_-_CBVEwNx_xften3.jpg"
+    ],
     "countries": ["Bangladesh", "Thailand"]
   },
 
@@ -90,7 +97,10 @@
   },
 
   "Asian Openbill": {
-    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788610045/IUM8Eg0_-_Imgur_rrnykn.jpg",
+    "photos": [
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788610045/IUM8Eg0_-_Imgur_rrnykn.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788611248/DSC_9734-Edit_nxuqbv.jpg"
+    ],
     "countries": ["Bangladesh", "Thailand"]
   },
 
@@ -324,10 +334,13 @@
     "countries": ["Thailand"]
   },
 
-  "Blue-tailed Emerald": {
-    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788722035/L5ZwvBB_-_Imgur_szpm7k.jpg",
-    "countries": ["Aruba","Curaçao"]
-  },
+"Blue-tailed Emerald": {
+  "photos": [
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788722035/L5ZwvBB_-_Imgur_szpm7k.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788643394/2_-_lvFKl81_ulg9vs.jpg"
+  ],
+  "countries": ["Aruba", "Curaçao"]
+},
 
   "Blue-throated Barbet": {
     "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788640656/7_-_dNJCmzv_yt17f0.jpg",
@@ -345,7 +358,10 @@
   },
 
   "Bluethroat": {
-    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788611663/2_-_ScarzHR_hnxuuc.jpg",
+    "photos": [
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788611663/2_-_ScarzHR_hnxuuc.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1791139487/DSC_6166-2_begews.jpg"
+    ],
     "countries": ["Bangladesh","Denmark","Estonia","Norway"]
   },
 
@@ -560,7 +576,10 @@
   },
 
   "Common Eider": {
-    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1782417662/DSC_0339-Edit_014334_lckmca.jpg",
+    "photos": [
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1782417662/DSC_0339-Edit_014334_lckmca.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1782417674/DSC_0483-Edit_014117_sphvw8.jpg"
+    ],
     "countries": ["Denmark","Estonia","Norway"]
   },
 
@@ -730,7 +749,11 @@
   },
 
   "Common Wood-Pigeon": {
-    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1782940422/10_-_Qk0vfQb_xfzr1c.jpg",
+    "photos": [
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1791143988/DSC_6110-2_txlfxq.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1782940422/10_-_Qk0vfQb_xfzr1c.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1791144018/DSC_0806-2_sv4lzy.jpg"
+    ],
     "countries": ["Belgium","Denmark","Estonia","Finland","Germany","Italy","Netherlands","Norway","Sweden","United Kingdom"]
   },
 
@@ -910,7 +933,11 @@
   },
 
   "Eurasian Jackdaw": {
-    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1782940416/2_-_7HtKHPI_nunjl0.jpg",
+    "photos": [ 
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1791152035/DSC_0317_2_qg5faf.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1791152035/DSC_0317_2_qg5faf.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1782940416/2_-_7HtKHPI_nunjl0.jpg"
+    ],
     "countries": ["Denmark","Finland","Netherlands","Norway","Sweden","United Kingdom"]
   },
 
@@ -1035,7 +1062,7 @@
   },
 
   "European Honey-buzzard": {
-    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1789844669/QG6B0Om_-_Imgur_eglbft.jpg",
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1791840077/639477358_op2zuu.jpg",
     "countries": ["Netherlands"]
   },
 
@@ -1090,7 +1117,10 @@
   },
 
   "Fulvous-breasted Woodpecker": {
-    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1789846238/4utcEXZ_-_Imgur_dwgaam.jpg",
+    "photos": [
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1789846238/4utcEXZ_-_Imgur_dwgaam.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1791151634/DSC_0178_ypeydn.jpg"
+    ],
     "countries": ["Bangladesh"]
   },
 
@@ -1405,7 +1435,10 @@
   },
 
   "House Sparrow": {
-    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1790633198/0MFxrVW_-_Imgur_m48b0q.jpg",
+    "photos": [
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1791145754/DSC_7261-Edit_rxc0m8.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1790633198/0MFxrVW_-_Imgur_m48b0q.jpg"
+    ],
     "countries": ["Aruba","Curaçao","Bangladesh","Denmark","Estonia","Finland","Germany","Greece","Latvia","Netherlands","Norway","Thailand"]
   },
 
@@ -1635,7 +1668,10 @@
   },
 
   "Long-tailed Shrike": {
-    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1782471571/14_-_B4ybD0y_oe7nbv.jpg",
+    "photos": [
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1791146898/DSC_0131_gdwq8l.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1782471571/14_-_B4ybD0y_oe7nbv.jpg"
+    ],
     "countries": ["Bangladesh"]
   },
 
@@ -1720,7 +1756,10 @@
   },
 
   "Mute Swan": {
-    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1782417746/DSC_6650-Edit_vugssv.jpg",
+    "photos": [
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1782417746/DSC_6650-Edit_vugssv.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1782417678/DSC_0703-Edit_kca9wm.jpg"
+    ],
     "countries": ["Denmark","Estonia","Finland","Italy","Netherlands","Norway","Sweden","United Kingdom","Poland"]
   },
 
@@ -1735,12 +1774,19 @@
   },
 
   "Northern Lapwing": {
-    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788725126/DSC_3296_063532_rbksqc.jpg",
+    "photos": [
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788725126/DSC_3296_063532_rbksqc.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1791147499/2_-_e4WIpj5_lhzomy.jpg"
+     ],
     "countries": ["Denmark","Estonia","Finland","Netherlands","Norway","United Kingdom"]
   },
 
   "Northern Nutcracker": {
-    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1782471549/5_-_yCdlMXF_kjeqmm.jpg",
+    "photos": [
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1791147780/DSC_0560_kyrjnk.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1791147722/DSC_0670-2_vrd60y.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1782471549/5_-_yCdlMXF_kjeqmm.jpg"
+    ],
     "countries": ["Norway"]
   },
 
@@ -1775,7 +1821,10 @@
   },
 
   "Northern Yellow Warbler": {
-    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1782470337/15_-_Arq0xUb_uoysff.jpg",
+    "photos": [
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1782470337/15_-_Arq0xUb_uoysff.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788640713/8_-_MW6Dvba_d63juv.jpg"
+    ],
     "countries": ["Aruba"]
   },
 
@@ -1935,7 +1984,10 @@
   },
 
   "Purple Sandpiper": {
-    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1789842921/bX7uX3u_-_Imgur_u1fc6j.jpg",
+    "photos": [
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1789842921/bX7uX3u_-_Imgur_u1fc6j.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1791149125/DSC_0474_nbw095.jpg"
+    ],
     "countries": ["Norway"]
   },
 
@@ -2055,7 +2107,11 @@
   },
 
   "Ring-necked Pheasant": {
-    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1789842912/RQTVaxy_-_Imgur_pcuxmf.jpg",
+    "photos": [    
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1791151390/DSC_0813_xynayv.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1791151411/Firefly_f9ncrd.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1789842912/RQTVaxy_-_Imgur_pcuxmf.jpg"
+    ],
     "countries": ["Denmark","Italy","Netherlands"]
   },
 
@@ -2360,7 +2416,10 @@
   },
 
   "Striated Babbler": {
-    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1782417762/DSC_9586-Edit_yjvowf.jpg",
+    "photos": [
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1782417762/DSC_9586-Edit_yjvowf.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1791144134/527992951_btliuw.jpg"
+    ],
     "countries": ["Bangladesh"]
   },
 
@@ -2495,7 +2554,10 @@
   },
 
   "Western Marsh Harrier": {
-    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1789758798/567663571_tmo60g.jpg",
+    "photos": [
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1789758798/567663571_tmo60g.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1789758930/DSC_5825_ix2gz2.jpg"
+    ],
     "countries": ["Denmark","Italy","Netherlands","Norway"]
   },
 
