@@ -543,6 +543,33 @@ footer .footer-line{display:flex;align-items:center;justify-content:center;gap:1
  #birdSidebar[data-sheet=peek]{height:66px;min-height:66px}
 }
 
+
+/* Quiet mobile rail, compact globe controls and a familiar drawer handle. */
+#globeZoom{top:auto;bottom:16px;right:12px}
+#speciesLegend{top:16px;right:12px;bottom:auto;left:auto}
+#globeHome svg{display:block;width:18px;height:18px;margin:auto;fill:none;stroke:currentColor;stroke-width:1.5;pointer-events:none}
+.globe-heading{max-width:calc(100% - 160px)}
+@media(max-width:760px){
+ body{padding-right:24px}
+ #pageScroll{width:24px}
+ #pageScroll:before{left:11px;opacity:.3}
+ #pageScrollThumb{left:11px;width:2px;opacity:.28;transition:width .16s ease,left .16s ease,opacity .25s ease}
+ #pageScroll.active #pageScrollThumb,#pageScroll.dragging #pageScrollThumb,#pageScroll:focus-visible #pageScrollThumb{left:9px;width:6px;opacity:.85}
+ #globeZoom{grid-template-columns:34px;width:34px;top:auto;bottom:calc(46% + 10px);right:10px}
+ #globeZoom button,#globeZoom #globeHome{width:34px;min-width:34px;height:32px;min-height:32px!important;padding:0}
+ #globeZoom #globeHome{display:block;grid-column:auto}
+ #speciesLegend{top:10px;right:10px;bottom:auto;left:auto}
+ .globe-heading{max-width:calc(100% - 130px)}
+ .sidebar-location-row{display:block;padding-top:15px}
+ #listToggle{position:absolute;left:50%;top:0;transform:translateX(-50%);display:flex;width:72px;height:24px;min-height:24px;padding:0;align-items:center;justify-content:center;z-index:2}
+ #listToggle .sheet-handle{display:block;width:38px;height:5px;background:#fff;border-radius:5px;box-shadow:0 0 0 1px #8a9b9380}
+ #listToggleLabel{display:none}
+ #listToggle:focus-visible{outline:2px solid var(--forest);outline-offset:-2px;border-radius:8px}
+ #birdSidebar[data-sheet=peek]{height:78px;min-height:78px}
+}
+@media(hover:hover) and (max-width:760px){#pageScroll:hover #pageScrollThumb{left:9px;width:6px;opacity:.85}}
+@media(prefers-reduced-motion:reduce){#pageScrollThumb{transition:none}}
+
 </style>
 
 <script data-goatcounter="https://birdblog-majsujan.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
@@ -650,13 +677,13 @@ footer .footer-line{display:flex;align-items:center;justify-content:center;gap:1
 <section id="mapTools" aria-label="Bird map and species list">
 <div id="mainPanel" class="bird-map-layout">
 <div id="mapStage"><div class="globe-heading"><h2>Explore world</h2><nav class="map-breadcrumb" aria-label="Selected map area"><button id="crumbWorld" disabled>World</button><button id="crumbCountry" hidden></button><span id="crumbRegion" hidden></span></nav></div><div id="birdGlobe"><svg tabindex="0" role="img" aria-label="Birding globe. Drag to rotate, pinch or use plus and minus to zoom."></svg></div>
-<div id="globeZoom" role="group" aria-label="Globe controls"><button id="globePlus" aria-label="Zoom in">+</button><button id="globeMinus" aria-label="Zoom out">−</button><button id="globeReset" aria-label="Recenter selected area">Recenter</button><button id="globeHome" aria-label="Return to world view">World</button></div>
+<div id="globeZoom" role="group" aria-label="Globe controls"><button id="globePlus" aria-label="Zoom in">+</button><button id="globeMinus" aria-label="Zoom out">−</button><button id="globeHome" aria-label="Zoom out to the whole globe" title="World view"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18M5 6h14M5 18h14"/></svg></button></div>
 <div id="speciesLegend" aria-label="Species observed color scale: 1 to 200 or more"><span class="legend-title">Species observed</span><div class="legend-ramp"><span>1</span><span class="scale"></span><span>200+</span></div></div>
 <p id="mapMessage" role="status"></p><button id="retryGlobe" hidden>Retry globe</button>
 </div>
 <aside id="birdSidebar" aria-label="Species list" data-sheet="half">
 
-<div class="sidebar-location-row"><nav class="map-breadcrumb sidebar-path" aria-label="Species list area"><button id="listWorld" disabled>World</button><button id="listCountry" hidden></button><span id="listRegion" hidden></span></nav><p id="birdListCount" role="status"></p><button id="listToggle" aria-expanded="true" aria-controls="birdListBody"><span class="sheet-handle"></span><span id="listToggleLabel">Expand species list</span></button></div>
+<div class="sidebar-location-row"><nav class="map-breadcrumb sidebar-path" aria-label="Species list area"><button id="listWorld" disabled>World</button><button id="listCountry" hidden></button><span id="listRegion" hidden></span></nav><p id="birdListCount" role="status"></p><button id="listToggle" aria-expanded="true" aria-controls="birdListBody"><span class="sheet-handle" aria-hidden="true"></span><span id="listToggleLabel">Expand species list</span></button></div>
 <div id="birdListBody"><div class="sidebar-search"><input id="mapSearch" type="search" aria-label="Search birds or countries" placeholder="Search birds or countries…" autocomplete="off"><button id="mapSearchClear" aria-label="Clear search" hidden>×</button></div>
 <div id="countryMatches" aria-label="Matching countries"></div><details id="regionPicker" hidden><summary id="regionPickerTitle">Regions</summary><div id="regionButtons"></div></details>
 <div id="birdListRows"></div>
@@ -1334,7 +1361,7 @@ function drawCountryGlobe(){
  const rect=$map('birdGlobe').getBoundingClientRect(),w=rect.width,h=rect.height;
  if(!w||!h)return;
  const bottomGap=window.matchMedia('(max-width:760px)').matches?$map('birdSidebar').getBoundingClientRect().height+10:16;
- $map('speciesLegend').style.bottom=bottomGap+'px';
+ $map('globeZoom').style.bottom=bottomGap+'px';
  const dark=document.documentElement.dataset.theme==='dark';
  const k=d3.zoomTransform(globeSVG.node()).k;
  const visibleH=window.matchMedia('(max-width:760px)').matches?Math.max(130,h-$map('birdSidebar').getBoundingClientRect().height):h;
@@ -1398,7 +1425,7 @@ async function startGlobe(){
 $map('retryGlobe').onclick=startGlobe;
 $map('globePlus').onclick=()=>stepGlobeZoom(1.6);
 $map('globeMinus').onclick=()=>stepGlobeZoom(1/1.6);
-$map('globeReset').onclick=resetGlobeZoom;
+
 new ResizeObserver(()=>{if(globeProjection)drawCountryGlobe();}).observe($map('mapStage'));
 new MutationObserver(()=>{if(globeProjection)drawCountryGlobe();}).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
 
@@ -1427,7 +1454,7 @@ function drawGlobeRegions(){
 }
 function initMobileDrawer(){
  const sidebar=$map('birdSidebar'),handle=$map('listToggle');let startY=null,dragged=false;
- function setState(state){sidebar.dataset.sheet=state;handle.setAttribute('aria-expanded',String(state!=='peek'));handle.setAttribute('aria-label',state==='peek'?'Show species list':state==='expanded'?'Reduce species list':'Expand species list');$map('listToggleLabel').textContent=state==='expanded'?'⌄':'⌃';}
+ function setState(state){sidebar.dataset.sheet=state;handle.setAttribute('aria-expanded',String(state!=='peek'));handle.setAttribute('aria-label',state==='peek'?'Show species list':state==='expanded'?'Reduce species list':'Expand species list');}
  handle.onclick=()=>{if(dragged){dragged=false;return;}setState(sidebar.dataset.sheet==='peek'?'half':sidebar.dataset.sheet==='expanded'?'half':'expanded');};
  $map('mapSearch').addEventListener('focus',()=>{if(sidebar.dataset.sheet==='peek')setState('half');});
  new ResizeObserver(()=>{if(globeActive)drawCountryGlobe();}).observe(sidebar);
@@ -1501,9 +1528,7 @@ function stepGlobeZoom(factor){
 }
 function updateGlobeControls(k){
  $map('globeHome').disabled=false;$map('globePlus').disabled=k>=79.99;$map('globeMinus').disabled=k<=.851;
- $map('globeReset').textContent='Recenter';
- const label=selectedRegion?'Recenter selected region':selectedCountry?'Recenter country at regional detail':'Recenter world view';
- $map('globeReset').setAttribute('aria-label',label);$map('globeReset').setAttribute('title',label);
+
 }
 
 $map('globeHome').onclick=()=>selectBirdCountry(null);
@@ -1533,16 +1558,17 @@ startGlobe();
 
 /* An independent page scroll rail remains reachable beside touch-driven content. */
 (function(){
- const rail=document.getElementById('pageScroll'),thumb=document.getElementById('pageScrollThumb');let drag=null,pending=false;
+ const rail=document.getElementById('pageScroll'),thumb=document.getElementById('pageScrollThumb');let drag=null,pending=false,idleTimer=null;
  const clamp=(v,lo,hi)=>Math.max(lo,Math.min(hi,v));
  function geometry(){const h=rail.getBoundingClientRect().height,view=document.documentElement.clientHeight,max=Math.max(0,document.documentElement.scrollHeight-view),size=Math.min(h,Math.max(44,h*view/(view+max)));return {h,max,size,travel:Math.max(0,h-size)};}
  function update(){pending=false;const g=geometry(),value=g.max?clamp(window.scrollY/g.max,0,1):0;rail.hidden=g.max<2;thumb.style.height=g.size+'px';thumb.style.transform=`translateY(${value*g.travel}px)`;rail.setAttribute('aria-valuenow',Math.round(value*100));}
+ function reveal(){rail.classList.add('active');clearTimeout(idleTimer);idleTimer=setTimeout(()=>{if(!drag)rail.classList.remove('active');},1000);}
  function schedule(){if(!pending){pending=true;requestAnimationFrame(update);}}
- rail.addEventListener('pointerdown',e=>{if(e.button!==0)return;e.preventDefault();const g=geometry(),top=rail.getBoundingClientRect().top,current=g.max?window.scrollY/g.max*g.travel:0;drag={offset:e.target===thumb?e.clientY-top-current:g.size/2};rail.setPointerCapture(e.pointerId);rail.classList.add('dragging');move(e);});
+ rail.addEventListener('pointerdown',e=>{if(e.button!==0)return;e.preventDefault();const g=geometry(),top=rail.getBoundingClientRect().top,current=g.max?window.scrollY/g.max*g.travel:0;drag={offset:e.target===thumb?e.clientY-top-current:g.size/2};rail.setPointerCapture(e.pointerId);rail.classList.add('dragging');reveal();move(e);});
  function move(e){if(!drag)return;const g=geometry(),position=clamp(e.clientY-rail.getBoundingClientRect().top-drag.offset,0,g.travel);window.scrollTo({top:g.travel?position/g.travel*g.max:0,behavior:'instant'});update();}
- rail.addEventListener('pointermove',move);const end=()=>{drag=null;rail.classList.remove('dragging');};rail.addEventListener('pointerup',end);rail.addEventListener('pointercancel',end);rail.addEventListener('lostpointercapture',end);
+ rail.addEventListener('pointermove',move);const end=()=>{drag=null;rail.classList.remove('dragging');reveal();};rail.addEventListener('pointerup',end);rail.addEventListener('pointercancel',end);rail.addEventListener('lostpointercapture',end);
  rail.addEventListener('keydown',e=>{const g=geometry(),steps={ArrowDown:80,ArrowUp:-80,PageDown:innerHeight*.8,PageUp:-innerHeight*.8};let top;if(e.key==='Home')top=0;else if(e.key==='End')top=g.max;else if(e.key in steps)top=window.scrollY+steps[e.key];else return;e.preventDefault();window.scrollTo({top:clamp(top,0,g.max),behavior:'instant'});});
- window.addEventListener('scroll',schedule,{passive:true});window.addEventListener('resize',schedule);new ResizeObserver(schedule).observe(document.body);update();
+ window.addEventListener('scroll',()=>{reveal();schedule();},{passive:true});window.addEventListener('resize',schedule);new ResizeObserver(schedule).observe(document.body);update();
 })();
 
 /* ================= ABOUT PANEL ================= */
