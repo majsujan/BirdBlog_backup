@@ -484,6 +484,32 @@ html[data-theme=dark] .globe-heading{color:#d1e0e7}
 #birdListCount{padding:9px 0;font-size:11px}#regionPicker summary{font-size:11px}
 @media(max-width:760px){.sidebar-location-row{margin:0 0 7px}.sidebar-path{font-size:12px}#showMap{flex-shrink:0}#birdSidebar[data-sheet=peek]{height:132px}}
 
+
+/* A quiet transition from photographs to the explorer. */
+#mapTools{border-top:5px solid var(--paper-2);box-shadow:0 -1px 0 var(--line)}
+.sidebar-location-row{display:block;margin:0 0 12px;padding-bottom:10px;border-bottom:1px solid var(--line);flex-shrink:0}
+#birdListCount{border:0;padding:2px 0 0;margin:0;font:11px var(--font-mono);color:var(--ink-soft)}
+footer{border-top:1px solid var(--line);padding:18px 16px;text-align:center;color:var(--ink-soft)}
+footer .footer-line{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin:0;font-size:11px;white-space:normal}
+#creditsToggle{display:inline-flex;align-items:center;gap:5px;padding:5px 0 5px 12px;border:0;border-left:1px solid var(--line);background:none;text-decoration:none;font:inherit;color:inherit;cursor:pointer}
+#creditsToggle:after{content:'⌄';font-size:12px;transition:transform .18s ease}#creditsToggle[aria-expanded=true]:after{transform:rotate(180deg)}
+#creditsToggle:hover{color:var(--ink)}#creditsToggle:focus-visible{outline:2px solid var(--forest);outline-offset:4px;border-radius:2px}
+#creditNames{margin:10px auto 0;font-size:10px;line-height:1.6;letter-spacing:.02em;color:var(--ink-soft)}
+@media(max-width:760px){
+ #globeZoom{display:grid;grid-template-columns:34px 34px;gap:0;right:10px;top:10px;width:68px}
+ #globeZoom button{min-width:0;min-height:32px!important;height:32px;padding:0;font-size:19px}
+ #globeZoom #globeReset,#globeZoom #globeHome{display:block;grid-column:1 / -1;min-height:30px!important;height:30px;font-size:10px!important;padding:0;border-bottom:1px solid var(--line)}
+ #globeZoom #globeHome{border-bottom:0}
+ .globe-heading{max-width:calc(100% - 94px)}
+ .sidebar-location-row{margin:0 0 8px;padding-bottom:7px}
+ #birdListCount{font-size:10px;padding-top:0}
+ #birdSidebar[data-sheet=peek]{height:104px;min-height:104px}
+ #birdSidebar[data-sheet=peek] #birdListBody{display:none}
+ #birdSidebar[data-sheet=peek] .sidebar-location-row{margin:0;border:0;padding-bottom:0}
+ #listToggle{min-height:36px}
+ footer{padding:14px 12px}
+}
+
 </style>
 
 <script data-goatcounter="https://birdblog-majsujan.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
@@ -596,13 +622,13 @@ html[data-theme=dark] .globe-heading{color:#d1e0e7}
 </div>
 <aside id="birdSidebar" aria-label="Species list" data-sheet="half">
 <button id="listToggle" aria-expanded="true" aria-controls="birdListBody"><span class="sheet-handle"></span><span id="listToggleLabel">Expand species list</span></button>
-<div class="sidebar-location-row"><nav class="map-breadcrumb sidebar-path" aria-label="Species list area"><button id="listWorld" disabled>World</button><button id="listCountry" hidden></button><span id="listRegion" hidden></span></nav><button id="showMap">Map</button></div>
+<div class="sidebar-location-row"><nav class="map-breadcrumb sidebar-path" aria-label="Species list area"><button id="listWorld" disabled>World</button><button id="listCountry" hidden></button><span id="listRegion" hidden></span></nav><p id="birdListCount" role="status"></p></div>
 <div id="birdListBody"><div class="sidebar-search"><input id="mapSearch" type="search" aria-label="Search birds or countries" placeholder="Search birds or countries…" autocomplete="off"><button id="mapSearchClear" aria-label="Clear search" hidden>×</button></div>
 <div id="countryMatches" aria-label="Matching countries"></div><details id="regionPicker" hidden><summary id="regionPickerTitle">Regions</summary><div id="regionButtons"></div></details>
-<p id="birdListCount" role="status"></p><div id="birdListRows"></div>
+<div id="birdListRows"></div>
 </div></aside></div></section>
 
-<footer><p>© 2026 Sujan Abu Jafar <span aria-hidden="true">·</span> <button id="creditsToggle" aria-expanded="false" aria-controls="creditNames">Credits</button></p><p id="creditNames" hidden>eBird · Natural Earth · geoBoundaries</p></footer>
+<footer><p class="footer-line"><span>© 2026 Sujan Abu Jafar</span><button id="creditsToggle" aria-expanded="false" aria-controls="creditNames">Credits</button></p><p id="creditNames" hidden>Bird records · eBird <span aria-hidden="true"> / </span> Map boundaries · Natural Earth &amp; geoBoundaries</p></footer>
 
 </div><!-- End .site-page -->
 
@@ -1232,7 +1258,7 @@ function renderBirdList(){
  const all=(indices||[]).map(i=>regionsData.names[i]).sort((a,b)=>a.localeCompare(b));
  const shown=all.filter(n=>n.toLowerCase().includes(query)||(scientificNames[n]||'').toLowerCase().includes(query));
  renderMapBreadcrumb();renderRegionNav();
- $map('birdListCount').textContent=`${shown.length}${query?' of '+all.length:''} species${selectedCountry?'':' · worldwide'}`;
+ $map('birdListCount').textContent=`${shown.length}${query?' of '+all.length:''} species`;
  $map('mapSearchClear').hidden=!query;
  const matches=$map('countryMatches');matches.replaceChildren();
  if(query)Object.keys(birdData).filter(n=>n.toLowerCase().includes(query)).slice(0,6).forEach(n=>{const b=document.createElement('button');b.textContent=n;b.onclick=()=>selectBirdCountry(n);matches.append(b);});
@@ -1362,9 +1388,8 @@ function drawGlobeRegions(){
 }
 function initMobileDrawer(){
  const sidebar=$map('birdSidebar'),handle=$map('listToggle');let startY=null,dragged=false;
- function setState(state){sidebar.dataset.sheet=state;handle.setAttribute('aria-expanded',String(state==='expanded'));$map('listToggleLabel').textContent=state==='expanded'?'Balanced view':'More birds';$map('showMap').hidden=state==='peek';}
- handle.onclick=()=>{if(dragged){dragged=false;return;}setState(sidebar.dataset.sheet==='expanded'?'half':'expanded');};
- $map('showMap').onclick=()=>setState('peek');
+ function setState(state){sidebar.dataset.sheet=state;handle.setAttribute('aria-expanded',String(state!=='peek'));$map('listToggleLabel').textContent=state==='peek'?'Show species ↑':state==='expanded'?'Balanced view ↓':'More birds ↑';}
+ handle.onclick=()=>{if(dragged){dragged=false;return;}setState(sidebar.dataset.sheet==='peek'?'half':sidebar.dataset.sheet==='expanded'?'half':'expanded');};
  $map('mapSearch').addEventListener('focus',()=>{if(sidebar.dataset.sheet==='peek')setState('half');});
  new ResizeObserver(()=>{if(globeActive)drawCountryGlobe();}).observe(sidebar);
  handle.addEventListener('pointerdown',e=>{startY=e.clientY;dragged=false;handle.setPointerCapture(e.pointerId);});
