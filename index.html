@@ -474,6 +474,16 @@ html[data-theme=dark] .globe-heading{color:#d1e0e7}
 }
 
 #returnPhotos{pointer-events:auto;border:0;background:transparent;color:inherit;font:inherit;font-size:11px;padding:0 0 7px;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+
+/* Minimal species panel: one search, one count, one location trail. */
+.sidebar-location-row{display:flex;align-items:center;gap:8px;min-width:0;margin:0 0 12px}
+.sidebar-path{flex:1;min-width:0;flex-wrap:nowrap;overflow-x:auto;white-space:nowrap;scrollbar-width:thin;font-size:13px;gap:6px}
+.sidebar-path>*{flex-shrink:0}.sidebar-path button{min-height:36px}
+#listCountry:before,#listRegion:before{content:'›';margin-right:6px;opacity:.6}
+.sidebar-path [hidden]{display:none!important}
+#birdListCount{padding:9px 0;font-size:11px}#regionPicker summary{font-size:11px}
+@media(max-width:760px){.sidebar-location-row{margin:0 0 7px}.sidebar-path{font-size:12px}#showMap{flex-shrink:0}#birdSidebar[data-sheet=peek]{height:132px}}
+
 </style>
 
 <script data-goatcounter="https://birdblog-majsujan.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
@@ -579,16 +589,15 @@ html[data-theme=dark] .globe-heading{color:#d1e0e7}
 <!-- Species Explorer -->
 <section id="mapTools" aria-label="Bird map and species list">
 <div id="mainPanel" class="bird-map-layout">
-<div id="mapStage"><div class="globe-heading"><button id="returnPhotos" type="button">↑ View photos</button><h2>Explore world</h2><nav class="map-breadcrumb" aria-label="Selected map area"><button id="crumbWorld" disabled>World</button><button id="crumbCountry" hidden></button><span id="crumbRegion" hidden></span></nav></div><div id="birdGlobe"><svg tabindex="0" role="img" aria-label="Birding globe. Drag to rotate, pinch or use plus and minus to zoom."></svg></div>
+<div id="mapStage"><div class="globe-heading"><h2>Explore world</h2><nav class="map-breadcrumb" aria-label="Selected map area"><button id="crumbWorld" disabled>World</button><button id="crumbCountry" hidden></button><span id="crumbRegion" hidden></span></nav></div><div id="birdGlobe"><svg tabindex="0" role="img" aria-label="Birding globe. Drag to rotate, pinch or use plus and minus to zoom."></svg></div>
 <div id="globeZoom" role="group" aria-label="Globe controls"><button id="globePlus" aria-label="Zoom in">+</button><button id="globeMinus" aria-label="Zoom out">−</button><button id="globeReset" aria-label="Fit selected area">Fit area</button><button id="globeHome" aria-label="Return to world view">World</button></div>
 <div id="speciesLegend" aria-label="Species observed color scale: 1 to 200 or more"><span class="legend-title">Species observed</span><div class="legend-ramp"><span>1</span><span class="scale"></span><span>200+</span></div></div>
 <p id="mapMessage" role="status"></p><button id="retryGlobe" hidden>Retry globe</button>
 </div>
 <aside id="birdSidebar" aria-label="Species list" data-sheet="half">
 <button id="listToggle" aria-expanded="true" aria-controls="birdListBody"><span class="sheet-handle"></span><span id="listToggleLabel">Expand species list</span></button>
-<nav class="area-breadcrumb" aria-label="Map area"><button id="backCountry" hidden></button></nav><div class="bird-sidebar-heading"><div><h2 id="birdRegion">All countries</h2></div><div class="area-actions"><button id="allCountries" hidden>World</button><button id="showMap">Show map</button></div></div>
-<div id="journalTotals" aria-label="Lifetime totals"><span><strong id="statObserved">544</strong> observed</span><span><strong id="statPhotographed">480</strong> photographed</span><span><strong id="statCountries">18</strong> countries</span></div><div id="birdListBody">
-<label for="mapSearch">Search birds or countries</label><div class="sidebar-search"><input id="mapSearch" type="search" placeholder="Search birds or countries…" autocomplete="off"><button id="mapSearchClear" aria-label="Clear search" hidden>×</button></div>
+<div class="sidebar-location-row"><nav class="map-breadcrumb sidebar-path" aria-label="Species list area"><button id="listWorld" disabled>World</button><button id="listCountry" hidden></button><span id="listRegion" hidden></span></nav><button id="showMap">Map</button></div>
+<div id="birdListBody"><div class="sidebar-search"><input id="mapSearch" type="search" aria-label="Search birds or countries" placeholder="Search birds or countries…" autocomplete="off"><button id="mapSearchClear" aria-label="Clear search" hidden>×</button></div>
 <div id="countryMatches" aria-label="Matching countries"></div><details id="regionPicker" hidden><summary id="regionPickerTitle">Regions</summary><div id="regionButtons"></div></details>
 <p id="birdListCount" role="status"></p><div id="birdListRows"></div>
 </div></aside></div></section>
@@ -715,11 +724,7 @@ countryFilter.appendChild(option);
 });
 }
 
-function updateStats() {
-document.getElementById("statObserved").textContent = regionsData.totals.observed;
-document.getElementById("statPhotographed").textContent = regionsData.totals.photographed;
-document.getElementById("statCountries").textContent = Object.keys(birdData).length;
-}
+function updateStats() {}
 
 /* ================= BIRD OF THE DAY + NAVIGATION ================= */
 function showBirdOfTheDay() {
@@ -1226,7 +1231,7 @@ function renderBirdList(){
  const indices=selectedRegion?regionByCode[selectedRegion].s:selectedCountry?regionsData.countries[selectedCountry]:regionsData.names.map((_,i)=>i);
  const all=(indices||[]).map(i=>regionsData.names[i]).sort((a,b)=>a.localeCompare(b));
  const shown=all.filter(n=>n.toLowerCase().includes(query)||(scientificNames[n]||'').toLowerCase().includes(query));
- renderMapBreadcrumb();$map('birdRegion').textContent=selectedRegion?regionByCode[selectedRegion].n:selectedCountry||'My birding journal';$map('journalTotals').hidden=!!selectedCountry;renderRegionNav();$map('allCountries').hidden=!selectedCountry;
+ renderMapBreadcrumb();renderRegionNav();
  $map('birdListCount').textContent=`${shown.length}${query?' of '+all.length:''} species${selectedCountry?'':' · worldwide'}`;
  $map('mapSearchClear').hidden=!query;
  const matches=$map('countryMatches');matches.replaceChildren();
@@ -1253,7 +1258,7 @@ window.clearMapSearch=()=>{$map('mapSearch').value='';highlightSet=null;renderBi
 window.showSpeciesOnMap=name=>{selectedCountry=null;selectedRegion=null;updateRegionLayer();$map('mapSearch').value=name;highlightSet=new Set(birds[name]?.countries||[]);renderBirdList();applyMapHighlight();showExplorePanel('map');if(globeActive)fitGlobeSelection();$map('mapTools').scrollIntoView({behavior:'smooth',block:'start'});};
 $map('mapSearch').oninput=()=>{highlightSet=null;renderBirdList();applyMapHighlight();};
 $map('mapSearchClear').onclick=()=>{window.clearMapSearch();$map('mapSearch').focus();};
-$map('allCountries').onclick=()=>selectBirdCountry(null);
+
 initMobileDrawer();
 
 fetch('https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json').then(r=>{if(!r.ok)throw Error('Country data unavailable');return r.json();}).then(data=>{worldGeometry=data;if(globeProjection){drawCountryGlobe();fitGlobeSelection();}}).catch(()=>{$map('mapMessage').textContent='Country outlines could not load. You can still search countries and browse your species.';});
@@ -1282,20 +1287,45 @@ function drawCountryGlobe(){
  const center=globeProjection.invert([w/2,visibleH/2]);
  globeSVG.selectAll('.island').data([['Aruba',12.52,-69.97],['Curaçao',12.17,-68.99]].filter(s=>d3.geoDistance([s[2],s[1]],center)<Math.PI/2)).join('circle').attr('class','island').attr('cx',s=>globeProjection([s[2],s[1]])[0]).attr('cy',s=>globeProjection([s[2],s[1]])[1]).attr('r',5).attr('fill',s=>getColor(birdData[s[0]])).attr('stroke','#333').style('cursor','pointer').on('click',(e,s)=>selectBirdCountry(s[0]));
 }
+let globeDrawPending=false,coastFrame=null;
+function queueGlobeDraw(){
+ if(globeDrawPending)return;globeDrawPending=true;
+ requestAnimationFrame(()=>{globeDrawPending=false;drawCountryGlobe();});
+}
+function stopGlobeCoast(){if(coastFrame!==null)cancelAnimationFrame(coastFrame);coastFrame=null;}
+function coastGlobe(speed){
+ stopGlobeCoast();let vx=Math.max(-.18,Math.min(.18,speed[0])),vy=Math.max(-.12,Math.min(.12,speed[1])),last=performance.now();
+ if(Math.hypot(vx,vy)<.004)return;
+ function tick(now){
+  const dt=Math.min(32,now-last);last=now;const decay=Math.pow(.92,dt/16.67);vx*=decay;vy*=decay;
+  const r=globeProjection.rotate(),lat=Math.max(-89,Math.min(89,r[1]+vy*dt));if(Math.abs(lat)>=89)vy=0;
+  globeProjection.rotate([r[0]+vx*dt,lat,0]);drawCountryGlobe();
+  coastFrame=Math.hypot(vx,vy)>.002?requestAnimationFrame(tick):null;
+ }
+ coastFrame=requestAnimationFrame(tick);
+}
 function resetGlobeZoom(){fitGlobeSelection();}
 async function startGlobe(){
  $map('mapMessage').textContent='Loading globe…';
  try{await loadGlobe();
  if(!globeProjection){
   globeProjection=d3.geoOrthographic().clipAngle(90).rotate([-10,-25,0]);globePath=d3.geoPath(globeProjection);globeSVG=d3.select('#birdGlobe svg');
-  let previous=null;
-  globeZoomBehavior=d3.zoom().scaleExtent([.85,80]).wheelDelta(e=>-e.deltaY*(e.deltaMode===1?.05:.0024)*(e.ctrlKey?4:1)).on('start',e=>{if(e.sourceEvent)globeSVG.interrupt();previous=e.transform;}).on('zoom',e=>{
-   const t=e.transform,source=e.sourceEvent;
-   if(previous&&source&&Math.abs(t.k-previous.k)<.0001){const r=globeProjection.rotate(),s=180/Math.PI/globeProjection.scale();globeProjection.rotate([r[0]+(t.x-previous.x)*s,Math.max(-89,Math.min(89,r[1]-(t.y-previous.y)*s)),0]);}
-   previous=t;drawCountryGlobe();
+  let previous=null,lastMove=0,velocity=[0,0];
+  globeZoomBehavior=d3.zoom().scaleExtent([.85,80]).clickDistance(5).wheelDelta(e=>-e.deltaY*(e.deltaMode===1?.05:.0024)*(e.ctrlKey?4:1)).on('start',e=>{
+   stopGlobeCoast();if(e.sourceEvent)globeSVG.interrupt();previous=e.transform;velocity=[0,0];lastMove=performance.now();
+  }).on('zoom',e=>{
+   const t=e.transform,source=e.sourceEvent,now=performance.now();
+   if(previous&&source&&Math.abs(t.k-previous.k)<.0001&&source.type!=='wheel'){
+    const r=globeProjection.rotate(),scale=180/Math.PI/globeProjection.scale(),dx=(t.x-previous.x)*scale,dy=-(t.y-previous.y)*scale,dt=Math.max(8,now-lastMove);
+    globeProjection.rotate([r[0]+dx,Math.max(-89,Math.min(89,r[1]+dy)),0]);
+    velocity=[velocity[0]*.35+dx/dt*.65,velocity[1]*.35+dy/dt*.65];lastMove=now;
+   }else velocity=[0,0];
+   previous=t;queueGlobeDraw();
+  }).on('end',e=>{
+   if(e.sourceEvent&&performance.now()-lastMove<100&&!window.matchMedia('(prefers-reduced-motion:reduce)').matches)coastGlobe(velocity);
   });
   globeSVG.call(globeZoomBehavior).on('dblclick.zoom',null);
-  globeSVG.on('keydown',e=>{if(e.key==='+'||e.key==='='){e.preventDefault();stepGlobeZoom(1.6);}else if(e.key==='-'){e.preventDefault();stepGlobeZoom(1/1.6);}else{const delta={ArrowLeft:[-10,0],ArrowRight:[10,0],ArrowUp:[0,10],ArrowDown:[0,-10]}[e.key];if(!delta)return;e.preventDefault();globeSVG.interrupt();const r=globeProjection.rotate();globeProjection.rotate([r[0]+delta[0],Math.max(-89,Math.min(89,r[1]+delta[1])),0]);drawCountryGlobe();}});
+  globeSVG.on('keydown',e=>{stopGlobeCoast();if(e.key==='+'||e.key==='='){e.preventDefault();stepGlobeZoom(1.6);}else if(e.key==='-'){e.preventDefault();stepGlobeZoom(1/1.6);}else{const delta={ArrowLeft:[-10,0],ArrowRight:[10,0],ArrowUp:[0,10],ArrowDown:[0,-10]}[e.key];if(!delta)return;e.preventDefault();globeSVG.interrupt();const r=globeProjection.rotate();globeProjection.rotate([r[0]+delta[0],Math.max(-89,Math.min(89,r[1]+delta[1])),0]);drawCountryGlobe();}});
  }
  drawCountryGlobe();fitGlobeSelection();$map('mapMessage').textContent='';$map('retryGlobe').hidden=true;
  }catch(e){$map('mapMessage').textContent='Globe could not load. Your species lists are available below.';$map('retryGlobe').hidden=false;}
@@ -1318,11 +1348,10 @@ function selectBirdRegion(id){
  $map('regionPicker').open=false;
 }
 function renderRegionNav(){
- const back=$map('backCountry');back.hidden=!selectedRegion;back.textContent=selectedCountry||'';back.onclick=()=>selectBirdCountry(selectedCountry);
  const picker=$map('regionPicker'),regs=regionsData.regions.filter(r=>r.c===selectedCountry).sort((a,b)=>a.n.localeCompare(b.n));picker.hidden=!regs.length;
- $map('regionPickerTitle').textContent=`Regions in ${selectedCountry||''} (${regs.length})`;
+ $map('regionPickerTitle').textContent='Choose region';
  const buttons=$map('regionButtons');buttons.replaceChildren();
- regs.forEach(r=>{const b=document.createElement('button');b.textContent=`${r.n} · ${r.s.length}`;b.setAttribute('aria-pressed',String(r.id===selectedRegion));b.onclick=()=>selectBirdRegion(r.id);buttons.append(b);});
+ regs.forEach(r=>{const b=document.createElement('button');b.textContent=r.n;b.setAttribute('aria-pressed',String(r.id===selectedRegion));b.onclick=()=>selectBirdRegion(r.id);buttons.append(b);});
  if(!selectedCountry)picker.open=false;
 }
 function orientGlobeFeature(f){const orient=c=>d3.geoArea({type:'Polygon',coordinates:c})>2*Math.PI?c.map(r=>[...r].reverse()):c;return {...f,geometry:{...f.geometry,coordinates:f.geometry.type==='Polygon'?orient(f.geometry.coordinates):f.geometry.type==='MultiPolygon'?f.geometry.coordinates.map(orient):f.geometry.coordinates}};}
@@ -1354,7 +1383,7 @@ function globeViewport(){
  return {width:box.width,height,base:Math.min(box.width,mobile?box.height*.54:height)*.39};
 }
 function cameraForFeature(raw){
- const feature=orientGlobeFeature(raw),center=d3.geoCentroid(feature),rotation=[-center[0],-center[1],0];
+ const feature=raw.type==='FeatureCollection'?{...raw,features:raw.features.map(orientGlobeFeature)}:orientGlobeFeature(raw),center=d3.geoCentroid(feature),rotation=[-center[0],-center[1],0];
  const probe=d3.geoOrthographic().rotate(rotation).translate([0,0]).scale(1).clipAngle(90);
  const bounds=d3.geoPath(probe).bounds(feature),dx=2*Math.max(Math.abs(bounds[0][0]),Math.abs(bounds[1][0])),dy=2*Math.max(Math.abs(bounds[0][1]),Math.abs(bounds[1][1])),v=globeViewport();
  const scale=Math.min(Math.max(90,v.width-80)/Math.max(dx,.001),Math.max(65,v.height-82)/Math.max(dy,.001));
@@ -1371,11 +1400,22 @@ function selectionCamera(){
   else target.zoom=Math.max(.85,target.zoom*.62);
   return target;
  }
- if(country){const target=cameraForFeature(country);if(window.matchMedia('(max-width:760px)').matches)target.zoom=Math.min(80,target.zoom*1.22);return target;}
+ if(country){
+  const mobile=window.matchMedia('(max-width:760px)').matches;
+  // Overseas islands must not force a phone's country view out to continental scale.
+  let focus=country;
+  if(mobile&&country.geometry.type==='MultiPolygon'){
+   const parts=country.geometry.coordinates.map(coordinates=>({type:'Feature',properties:country.properties,geometry:{type:'Polygon',coordinates}}));
+   const main=parts.sort((a,b)=>d3.geoArea(orientGlobeFeature(b))-d3.geoArea(orientGlobeFeature(a)))[0],center=d3.geoCentroid(orientGlobeFeature(main));
+   focus={type:'FeatureCollection',features:parts.filter(p=>p===main||d3.geoDistance(center,d3.geoCentroid(orientGlobeFeature(p)))<.22)};
+  }
+  const target=cameraForFeature(focus);if(mobile)target.zoom=Math.min(80,target.zoom*1.30);return target;
+ }
  const island=selectedCountry==='Aruba'?[-69.97,12.52]:selectedCountry==='Curaçao'?[-68.99,12.17]:null;
  return island?{rotation:[-island[0],-island[1],0],zoom:65}:null;
 }
 function fitGlobeSelection(){
+ stopGlobeCoast();
  if(!globeSVG||!globeActive||$map('mapTools').hidden)return;
  const target=selectionCamera();if(!target)return;
  globeSVG.interrupt();
@@ -1386,6 +1426,7 @@ function fitGlobeSelection(){
  else globeSVG.transition().duration(650).ease(d3.easeCubicInOut).tween('selection-camera',()=>apply);
 }
 function stepGlobeZoom(factor){
+ stopGlobeCoast();
  if(!globeSVG)return;globeSVG.interrupt();
  const target=Math.max(.85,Math.min(80,d3.zoomTransform(globeSVG.node()).k*factor));
  const center=globeProjection.translate();
@@ -1400,34 +1441,25 @@ function updateGlobeControls(k){
 
 $map('globeHome').onclick=()=>selectBirdCountry(null);
 
-let activeExplorePanel='photos';
-function updateExploreLink(panel){
- activeExplorePanel=panel;
- const isMap=panel==='map';
- $map('exploreTab').textContent=isMap?'View photos':'Explore map';
- $map('exploreTab').setAttribute('aria-label',isMap?'Scroll up to bird photographs':'Scroll down to the birding map');
+function showExplorePanel(){
+ if(slideshowRunning)stopSlideshow();
+ $map('mapTools').scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth',block:'start'});
 }
-function showExplorePanel(panel){
- updateExploreLink(panel);
- if(panel==='map'&&slideshowRunning)stopSlideshow();
- $map(panel==='map'?'mapTools':'photoPanel').scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth',block:'start'});
-}
-$map('returnPhotos').onclick=()=>showExplorePanel('photos');
-$map('exploreTab').onclick=()=>showExplorePanel(activeExplorePanel==='photos'?'map':'photos');
-// Keep navigation accurate when visitors scroll without using the header button.
-if('IntersectionObserver' in window){
- new IntersectionObserver(entries=>{for(const entry of entries)if(entry.isIntersecting)updateExploreLink(entry.target.id==='mapTools'?'map':'photos');},{rootMargin:'-15% 0px -60% 0px',threshold:0}).observe($map('mapTools'));
- new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting))updateExploreLink('photos');},{rootMargin:'-15% 0px -60% 0px',threshold:0}).observe($map('photoPanel'));
-}
+$map('exploreTab').onclick=()=>showExplorePanel();
 function renderMapBreadcrumb(){
- $map('crumbWorld').disabled=!selectedCountry;
- $map('crumbCountry').hidden=!selectedCountry;$map('crumbCountry').textContent=selectedCountry||'';$map('crumbCountry').disabled=!selectedRegion;
- $map('crumbRegion').hidden=!selectedRegion;$map('crumbRegion').textContent=selectedRegion?regionByCode[selectedRegion].n:'';
+ for(const prefix of ['list','crumb']){
+  $map(prefix+'World').disabled=!selectedCountry;
+  $map(prefix+'Country').hidden=!selectedCountry;$map(prefix+'Country').textContent=selectedCountry||'';$map(prefix+'Country').disabled=!selectedRegion;
+  $map(prefix+'Region').hidden=!selectedRegion;$map(prefix+'Region').textContent=selectedRegion?regionByCode[selectedRegion].n:'';
+ }
+
 }
+$map('listWorld').onclick=()=>selectBirdCountry(null);
+$map('listCountry').onclick=()=>selectBirdCountry(selectedCountry);
 $map('crumbWorld').onclick=()=>selectBirdCountry(null);
 $map('crumbCountry').onclick=()=>selectBirdCountry(selectedCountry);
 $map('creditsToggle').onclick=()=>{const details=$map('creditNames');details.hidden=!details.hidden;$map('creditsToggle').setAttribute('aria-expanded',String(!details.hidden));};
-updateExploreLink('photos');
+
 startGlobe();
 
 /* ================= ABOUT PANEL ================= */
