@@ -596,6 +596,42 @@ footer .footer-line{display:flex;align-items:center;justify-content:center;gap:1
  #mapMessage{top:14px}#retryGlobe{top:55px}
 }
 
+
+/* Use the page's established section typography and control palette. */
+.explorer-heading{padding:13px 20px 11px;background:var(--paper-2) var(--grain);color:var(--ink)}
+.explorer-heading h2{margin:0 0 5px;font-family:var(--font-main);font-size:1.1rem;font-weight:500;line-height:1.4;letter-spacing:var(--track-caps);text-transform:uppercase;color:var(--ink)}
+.explorer-context{display:flex;flex-wrap:nowrap;justify-content:space-between;align-items:center;gap:16px;min-width:0}
+.explorer-context .map-breadcrumb{flex:1;min-width:0;flex-wrap:nowrap;white-space:nowrap;overflow-x:auto;scrollbar-width:none;gap:7px;font-size:12px;color:var(--ink-soft)}
+.explorer-context .map-breadcrumb::-webkit-scrollbar{display:none}
+.explorer-context .map-breadcrumb>*{flex-shrink:0}
+.explorer-context .map-breadcrumb button{min-height:28px;padding:3px 0}
+.explorer-context .map-breadcrumb button:disabled,.explorer-context #crumbRegion{color:var(--ink)}
+.explorer-context #birdListCount{flex:0 0 auto;font-family:var(--font-main);font-size:12px;line-height:1.4;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+#globeZoom{border:1px solid var(--line);border-radius:6px;box-shadow:0 2px 8px #00000012;background:var(--paper)}
+#globeZoom button,html[data-theme=dark] #globeZoom button{background:var(--paper);color:var(--ink);border:0;border-bottom:1px solid var(--line);font-family:var(--font-main)}
+#globeZoom button:hover,html[data-theme=dark] #globeZoom button:hover{background:var(--paper-2)}
+#globeZoom button:disabled,html[data-theme=dark] #globeZoom button:disabled{background:var(--paper);color:var(--ink-soft);opacity:.45}
+#globeZoom button:focus-visible{outline:2px solid var(--active);outline-offset:-3px}
+#globeZoom #globeHome{border-bottom:0}
+#speciesLegend,html[data-theme=dark] #speciesLegend{background:var(--paper);color:var(--ink-soft);border:1px solid var(--line);box-shadow:0 1px 6px #0000000d}
+@media(max-width:760px){
+ body{padding-right:0}
+ #pageScroll{background:transparent;border:0;box-shadow:none}
+ #pageScroll:before{display:none}
+ #pageScrollThumb{left:19px;width:2px}
+ #pageScroll.active #pageScrollThumb,#pageScroll.dragging #pageScrollThumb,#pageScroll:focus-visible #pageScrollThumb{left:17px;width:6px}
+ #pageScroll:focus-visible{outline:none}#pageScroll:focus-visible #pageScrollThumb{outline:1px solid var(--active);outline-offset:1px}
+ .explorer-heading{padding:11px 14px 9px}
+ .explorer-heading h2{font-size:1.1rem;margin-bottom:3px}
+ .explorer-context{gap:10px}
+ .explorer-context .map-breadcrumb{font-size:11px}
+ .explorer-context #birdListCount{font-size:11px}
+ #mapStage{aspect-ratio:auto;height:calc(100vw + 64px);height:calc(100cqw + 64px)}
+ #globeZoom{right:28px}
+ #speciesLegend{left:12px}
+}
+@media(hover:hover) and (max-width:760px){#pageScroll:hover #pageScrollThumb{left:17px;width:6px}}
+
 </style>
 
 <script data-goatcounter="https://birdblog-majsujan.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
@@ -1389,7 +1425,7 @@ function drawCountryGlobe(){
  $map('globeZoom').style.bottom=bottomGap+'px';
  const dark=document.documentElement.dataset.theme==='dark';
  const k=d3.zoomTransform(globeSVG.node()).k;
- const visibleH=h;
+ const visibleH=globeViewport().height;
  globeProjection.translate([w/2,visibleH/2]).scale(globeViewport().base*k);
  globeSVG.attr('viewBox',`0 0 ${w} ${h}`);
  const sphere={type:'Sphere'};
@@ -1479,7 +1515,8 @@ function drawGlobeRegions(){
 }
 function globeViewport(){
  const box=$map('birdGlobe').getBoundingClientRect();
- return {width:box.width,height:box.height,base:Math.min(box.width,box.height)*.39};
+ const height=window.matchMedia('(max-width:760px)').matches?Math.max(100,box.height-64):box.height;
+ return {width:box.width,height,base:Math.min(box.width,height)*.39};
 }
 function cameraForFeature(raw,detail=false){
  const feature=raw.type==='FeatureCollection'?{...raw,features:raw.features.map(orientGlobeFeature)}:orientGlobeFeature(raw),center=d3.geoCentroid(feature),rotation=[-center[0],-center[1],0];
