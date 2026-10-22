@@ -652,6 +652,27 @@ footer .footer-line{display:flex;align-items:center;justify-content:center;gap:1
  #exploreTab{max-width:120px}
 }
 
+
+/* Keep the photo-to-map transition quiet, without a second title band. */
+.thumbnail-column{padding-bottom:12px}
+.bird-caption-bar{border-bottom:1px solid var(--line)}
+#mapTools{border-top:1px solid var(--line);border-radius:0;box-shadow:none}
+.photos-btn,.surprise-btn,.center-dot,.center-dot.playing,.nav-arrow{background:var(--paper);color:var(--ink);border:1px solid var(--line);text-shadow:none;box-shadow:0 1px 6px #0002}
+.photos-btn:hover,.surprise-btn:hover,.center-dot:hover,.nav-arrow:hover{background:var(--paper-2);color:var(--ink)}
+.nav-arrow{border-radius:6px;padding:5px 8px;font-size:26px}
+.photos-btn:focus-visible,.surprise-btn:focus-visible,.center-dot:focus-visible,.nav-arrow:focus-visible{outline:2px solid var(--active);outline-offset:3px}
+#globeCountry svg{display:block;width:18px;height:18px;margin:auto;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+#globeCountry[hidden]{display:none!important}
+@media(min-width:761px){
+ #mapStage,#birdSidebar{height:560px}
+ #globeZoom{top:12px;bottom:auto;right:12px}
+ #speciesLegend{top:auto;bottom:12px;left:auto;right:12px}
+}
+@media(max-width:760px){
+ .thumbnail-column{padding-bottom:10px}
+ #globeCountry{width:34px;min-width:34px;height:32px;min-height:32px!important;padding:0}
+}
+
 </style>
 
 <script data-goatcounter="https://birdblog-majsujan.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
@@ -757,10 +778,9 @@ footer .footer-line{display:flex;align-items:center;justify-content:center;gap:1
 
 <!-- Species Explorer -->
 <section id="mapTools" aria-label="Bird map and species list">
-<div class="explorer-heading"><h2 id="exploreWorldTitle">EXPLORE</h2></div>
 <div id="mainPanel" class="bird-map-layout">
 <div id="mapStage"><div id="birdGlobe"><svg tabindex="0" role="img" aria-label="Birding globe. Drag to rotate, pinch or use plus and minus to zoom."></svg></div>
-<div id="globeZoom" role="group" aria-label="Globe controls"><button id="globePlus" aria-label="Zoom in">+</button><button id="globeMinus" aria-label="Zoom out">−</button><button id="globeHome" aria-label="Zoom out to the whole globe" title="World view"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18M5 6h14M5 18h14"/></svg></button></div>
+<div id="globeZoom" role="group" aria-label="Globe controls"><button id="globePlus" aria-label="Zoom in">+</button><button id="globeMinus" aria-label="Zoom out">−</button><button id="globeCountry" aria-label="Back to country" title="Back to country" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5 3 11l6 6M3 11h11a6 6 0 0 1 6 6v2"/></svg></button><button id="globeHome" aria-label="Zoom out to the whole globe" title="World view"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18M5 6h14M5 18h14"/></svg></button></div>
 <div id="speciesLegend" aria-label="Species observed color scale: 1 to 200 or more"><span class="legend-title">Species observed</span><div class="legend-ramp"><span>1</span><span class="scale"></span><span>200+</span></div></div>
 <p id="mapMessage" role="status"></p><button id="retryGlobe" hidden>Retry globe</button>
 </div>
@@ -1443,7 +1463,7 @@ function drawCountryGlobe(){
  const rect=$map('birdGlobe').getBoundingClientRect(),w=rect.width,h=rect.height;
  if(!w||!h)return;
  const bottomGap=12;
- $map('globeZoom').style.bottom=bottomGap+'px';
+ $map('globeZoom').style.bottom=window.matchMedia('(max-width:760px)').matches?bottomGap+'px':'auto';
  const dark=document.documentElement.dataset.theme==='dark';
  const k=d3.zoomTransform(globeSVG.node()).k;
  const visibleH=globeViewport().height;
@@ -1590,6 +1610,7 @@ function updateGlobeControls(k){
 }
 
 $map('globeHome').onclick=()=>selectBirdCountry(null);
+$map('globeCountry').onclick=()=>{if(selectedCountry)selectBirdCountry(selectedCountry);};
 
 function showExplorePanel(){
  if(slideshowRunning)stopSlideshow();
@@ -1597,6 +1618,8 @@ function showExplorePanel(){
 }
 $map('exploreTab').onclick=()=>showExplorePanel();
 function renderMapBreadcrumb(){
+ $map('globeCountry').hidden=!selectedRegion;const parentLabel='Back to '+(selectedCountry||'country');$map('globeCountry').setAttribute('aria-label',parentLabel);$map('globeCountry').setAttribute('title',parentLabel);
+
  const label=selectedCountry||'World';$map('exploreTab').textContent=label;$map('exploreTab').setAttribute('title',label);$map('exploreTab').setAttribute('aria-label','Explore '+label);
 
  for(const prefix of ['crumb']){
