@@ -632,6 +632,26 @@ footer .footer-line{display:flex;align-items:center;justify-content:center;gap:1
 }
 @media(hover:hover) and (max-width:760px){#pageScroll:hover #pageScrollThumb{left:17px;width:6px}}
 
+
+/* Search, location, count, results: one clear hierarchy. */
+.explorer-heading{padding:12px 20px}
+.explorer-heading h2{margin:0}
+.species-context{flex-shrink:0;padding:10px 0 9px;border-bottom:1px solid var(--line);margin-bottom:2px}
+.species-context .map-breadcrumb{display:flex;flex-wrap:wrap;align-items:center;gap:3px 7px;color:var(--ink);font-family:var(--font-main);font-size:14px;font-weight:500;line-height:1.35}
+.species-context .map-breadcrumb button{font:inherit;min-height:26px;padding:2px 0;color:var(--ink-soft)}
+.species-context .map-breadcrumb button:disabled{color:var(--ink)}
+.species-context #birdListCount{margin:3px 0 0;padding:0;font-family:var(--font-main);font-size:12px;line-height:1.4;color:var(--ink-soft);border:0}
+#exploreTab{max-width:230px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@media(max-width:760px){
+ .explorer-heading{padding:11px 14px}
+ .explorer-heading h2{margin:0}
+ #birdSidebar{padding-top:11px}
+ .species-context{padding:8px 0}
+ .species-context .map-breadcrumb{font-size:14px}
+ .species-context #birdListCount{font-size:11px;margin-top:2px}
+ #exploreTab{max-width:120px}
+}
+
 </style>
 
 <script data-goatcounter="https://birdblog-majsujan.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
@@ -648,7 +668,7 @@ footer .footer-line{display:flex;align-items:center;justify-content:center;gap:1
 <img class="logo-dark" src="logo-title-dark.svg" alt="BirdBlog">
 </h1>
 <nav class="header-nav">
-<button id="exploreTab" class="nav-tab">Explore map</button>
+<button id="exploreTab" class="nav-tab" aria-label="Explore World">World</button>
 <button id="aboutTab" class="nav-tab" aria-controls="hamburgerPanel" aria-expanded="false">About</button>
 <button id="themeToggle" class="nav-tab" aria-label="Toggle dark mode">☾</button>
 </nav>
@@ -737,7 +757,7 @@ footer .footer-line{display:flex;align-items:center;justify-content:center;gap:1
 
 <!-- Species Explorer -->
 <section id="mapTools" aria-label="Bird map and species list">
-<div class="explorer-heading"><h2 id="exploreWorldTitle">Explore world</h2><div class="explorer-context"><nav class="map-breadcrumb" aria-label="Selected area"><button id="crumbWorld" disabled>World</button><button id="crumbCountry" hidden></button><span id="crumbRegion" hidden></span></nav><p id="birdListCount" role="status"></p></div></div>
+<div class="explorer-heading"><h2 id="exploreWorldTitle">EXPLORE</h2></div>
 <div id="mainPanel" class="bird-map-layout">
 <div id="mapStage"><div id="birdGlobe"><svg tabindex="0" role="img" aria-label="Birding globe. Drag to rotate, pinch or use plus and minus to zoom."></svg></div>
 <div id="globeZoom" role="group" aria-label="Globe controls"><button id="globePlus" aria-label="Zoom in">+</button><button id="globeMinus" aria-label="Zoom out">−</button><button id="globeHome" aria-label="Zoom out to the whole globe" title="World view"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18M5 6h14M5 18h14"/></svg></button></div>
@@ -747,7 +767,8 @@ footer .footer-line{display:flex;align-items:center;justify-content:center;gap:1
 <aside id="birdSidebar" aria-label="Species list">
 
 <div id="birdListBody"><div class="sidebar-search"><input id="mapSearch" type="search" aria-label="Search birds or countries" placeholder="Search birds or countries…" autocomplete="off"><button id="mapSearchClear" aria-label="Clear search" hidden>×</button></div>
-<div id="countryMatches" aria-label="Matching countries"></div><details id="regionPicker" hidden><summary id="regionPickerTitle">Regions</summary><div id="regionButtons"></div></details>
+<div class="species-context"><nav class="map-breadcrumb" aria-label="Selected area"><button id="crumbWorld" disabled>World</button><button id="crumbCountry" hidden></button><span id="crumbRegion" hidden></span></nav><p id="birdListCount" role="status"></p></div>
+<div id="countryMatches" aria-label="Matching countries"></div>
 <div id="birdListRows"></div>
 </div></aside></div></section>
 
@@ -1381,7 +1402,7 @@ function renderBirdList(){
  const indices=selectedRegion?regionByCode[selectedRegion].s:selectedCountry?regionsData.countries[selectedCountry]:regionsData.names.map((_,i)=>i);
  const all=(indices||[]).map(i=>regionsData.names[i]).sort((a,b)=>a.localeCompare(b));
  const shown=all.filter(n=>n.toLowerCase().includes(query)||(scientificNames[n]||'').toLowerCase().includes(query));
- renderMapBreadcrumb();renderRegionNav();
+ renderMapBreadcrumb();
  $map('birdListCount').textContent=`${shown.length}${query?' of '+all.length:''} species`;
  $map('mapSearchClear').hidden=!query;
  const matches=$map('countryMatches');matches.replaceChildren();
@@ -1498,14 +1519,6 @@ function selectBirdRegion(id){
  renderBirdList();applyMapHighlight();updateRegionLayer();
  
  if(globeActive)fitGlobeSelection();
- $map('regionPicker').open=false;
-}
-function renderRegionNav(){
- const picker=$map('regionPicker'),regs=regionsData.regions.filter(r=>r.c===selectedCountry).sort((a,b)=>a.n.localeCompare(b.n));picker.hidden=!regs.length;
- $map('regionPickerTitle').textContent='Choose region';
- const buttons=$map('regionButtons');buttons.replaceChildren();
- regs.forEach(r=>{const b=document.createElement('button');b.textContent=r.n;b.setAttribute('aria-pressed',String(r.id===selectedRegion));b.onclick=()=>selectBirdRegion(r.id);buttons.append(b);});
- if(!selectedCountry)picker.open=false;
 }
 function orientGlobeFeature(f){const orient=c=>d3.geoArea({type:'Polygon',coordinates:c})>2*Math.PI?c.map(r=>[...r].reverse()):c;return {...f,geometry:{...f.geometry,coordinates:f.geometry.type==='Polygon'?orient(f.geometry.coordinates):f.geometry.type==='MultiPolygon'?f.geometry.coordinates.map(orient):f.geometry.coordinates}};}
 let globeRegions;
@@ -1584,6 +1597,8 @@ function showExplorePanel(){
 }
 $map('exploreTab').onclick=()=>showExplorePanel();
 function renderMapBreadcrumb(){
+ const label=selectedCountry||'World';$map('exploreTab').textContent=label;$map('exploreTab').setAttribute('title',label);$map('exploreTab').setAttribute('aria-label','Explore '+label);
+
  for(const prefix of ['crumb']){
   $map(prefix+'World').disabled=!selectedCountry;
   $map(prefix+'Country').hidden=!selectedCountry;$map(prefix+'Country').textContent=selectedCountry||'';$map(prefix+'Country').disabled=!selectedRegion;
