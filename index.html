@@ -590,7 +590,7 @@ html[data-theme=dark] .globe-heading{color:#d1e0e7}
 <section id="mapTools" aria-label="Bird map and species list">
 <div id="mainPanel" class="bird-map-layout">
 <div id="mapStage"><div class="globe-heading"><h2>Explore world</h2><nav class="map-breadcrumb" aria-label="Selected map area"><button id="crumbWorld" disabled>World</button><button id="crumbCountry" hidden></button><span id="crumbRegion" hidden></span></nav></div><div id="birdGlobe"><svg tabindex="0" role="img" aria-label="Birding globe. Drag to rotate, pinch or use plus and minus to zoom."></svg></div>
-<div id="globeZoom" role="group" aria-label="Globe controls"><button id="globePlus" aria-label="Zoom in">+</button><button id="globeMinus" aria-label="Zoom out">−</button><button id="globeReset" aria-label="Fit selected area">Fit area</button><button id="globeHome" aria-label="Return to world view">World</button></div>
+<div id="globeZoom" role="group" aria-label="Globe controls"><button id="globePlus" aria-label="Zoom in">+</button><button id="globeMinus" aria-label="Zoom out">−</button><button id="globeReset" aria-label="Recenter selected area">Recenter</button><button id="globeHome" aria-label="Return to world view">World</button></div>
 <div id="speciesLegend" aria-label="Species observed color scale: 1 to 200 or more"><span class="legend-title">Species observed</span><div class="legend-ramp"><span>1</span><span class="scale"></span><span>200+</span></div></div>
 <p id="mapMessage" role="status"></p><button id="retryGlobe" hidden>Retry globe</button>
 </div>
@@ -1382,11 +1382,14 @@ function globeViewport(){
  const mobile=window.matchMedia('(max-width:760px)').matches;
  return {width:box.width,height,base:Math.min(box.width,mobile?box.height*.54:height)*.39};
 }
-function cameraForFeature(raw){
+function cameraForFeature(raw,detail=false){
  const feature=raw.type==='FeatureCollection'?{...raw,features:raw.features.map(orientGlobeFeature)}:orientGlobeFeature(raw),center=d3.geoCentroid(feature),rotation=[-center[0],-center[1],0];
  const probe=d3.geoOrthographic().rotate(rotation).translate([0,0]).scale(1).clipAngle(90);
  const bounds=d3.geoPath(probe).bounds(feature),dx=2*Math.max(Math.abs(bounds[0][0]),Math.abs(bounds[1][0])),dy=2*Math.max(Math.abs(bounds[0][1]),Math.abs(bounds[1][1])),v=globeViewport();
- const scale=Math.min(Math.max(90,v.width-80)/Math.max(dx,.001),Math.max(65,v.height-82)/Math.max(dy,.001));
+ const widthScale=Math.max(90,v.width-(detail?48:80))/Math.max(dx,.001),heightScale=Math.max(65,v.height-(detail?76:82))/Math.max(dy,.001);
+ const fitScale=Math.min(widthScale,heightScale);
+ // On phones, prioritize readable regions over fitting every edge of a tall country.
+ const scale=detail?Math.min(Math.max(widthScale*1.08,fitScale*1.55),fitScale*2.2):fitScale;
  return {rotation,zoom:Math.max(.85,Math.min(80,scale/v.base))};
 }
 function selectionCamera(){
@@ -1409,7 +1412,7 @@ function selectionCamera(){
    const main=parts.sort((a,b)=>d3.geoArea(orientGlobeFeature(b))-d3.geoArea(orientGlobeFeature(a)))[0],center=d3.geoCentroid(orientGlobeFeature(main));
    focus={type:'FeatureCollection',features:parts.filter(p=>p===main||d3.geoDistance(center,d3.geoCentroid(orientGlobeFeature(p)))<.22)};
   }
-  const target=cameraForFeature(focus);if(mobile)target.zoom=Math.min(80,target.zoom*1.30);return target;
+  const target=cameraForFeature(focus,mobile);if(mobile)target.zoom=Math.min(80,Math.max(3.5,target.zoom));return target;
  }
  const island=selectedCountry==='Aruba'?[-69.97,12.52]:selectedCountry==='Curaçao'?[-68.99,12.17]:null;
  return island?{rotation:[-island[0],-island[1],0],zoom:65}:null;
@@ -1423,7 +1426,7 @@ function fitGlobeSelection(){
  const delta=((target.rotation[0]-start[0]+540)%360)-180;
  const apply=t=>{globeProjection.rotate([start[0]+delta*t,start[1]+(target.rotation[1]-start[1])*t,0]);globeSVG.call(globeZoomBehavior.transform,d3.zoomIdentity.scale(Math.exp(Math.log(startK)+(Math.log(target.zoom)-Math.log(startK))*t)));};
  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches)apply(1);
- else globeSVG.transition().duration(650).ease(d3.easeCubicInOut).tween('selection-camera',()=>apply);
+ else globeSVG.transition().duration(900).ease(d3.easeCubicInOut).tween('selection-camera',()=>apply);
 }
 function stepGlobeZoom(factor){
  stopGlobeCoast();
@@ -1434,9 +1437,10 @@ function stepGlobeZoom(factor){
  else globeSVG.transition().duration(220).call(globeZoomBehavior.scaleTo,target,center);
 }
 function updateGlobeControls(k){
- $map('globeHome').disabled=!selectedCountry&&Math.abs(k-1)<.01;$map('globePlus').disabled=k>=79.99;$map('globeMinus').disabled=k<=.851;
- $map('globeReset').textContent=selectedCountry?'Fit area':'Reset';
- $map('globeReset').setAttribute('aria-label',selectedRegion?'Fit selected region':selectedCountry?'Fit selected country':'Reset world view');
+ $map('globeHome').disabled=false;$map('globePlus').disabled=k>=79.99;$map('globeMinus').disabled=k<=.851;
+ $map('globeReset').textContent='Recenter';
+ const label=selectedRegion?'Recenter selected region':selectedCountry?'Recenter country at regional detail':'Recenter world view';
+ $map('globeReset').setAttribute('aria-label',label);$map('globeReset').setAttribute('title',label);
 }
 
 $map('globeHome').onclick=()=>selectBirdCountry(null);
