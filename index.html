@@ -673,6 +673,11 @@ footer .footer-line{display:flex;align-items:center;justify-content:center;gap:1
  #globeCountry{width:34px;min-width:34px;height:32px;min-height:32px!important;padding:0}
 }
 
+
+/* Light-touch photo controls, using the filter control's subtle border. */
+.nav-arrow,.nav-arrow:hover{background:transparent;color:var(--ink);border:1px solid var(--line);box-shadow:none;text-shadow:none}
+.surprise-btn,.surprise-btn:hover{background:transparent;color:var(--ink);box-shadow:none;backdrop-filter:none;border-color:var(--line)}
+
 </style>
 
 <script data-goatcounter="https://birdblog-majsujan.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
@@ -689,7 +694,7 @@ footer .footer-line{display:flex;align-items:center;justify-content:center;gap:1
 <img class="logo-dark" src="logo-title-dark.svg" alt="BirdBlog">
 </h1>
 <nav class="header-nav">
-<button id="exploreTab" class="nav-tab" aria-label="Explore World">World</button>
+<button id="exploreTab" class="nav-tab" aria-label="Explore the map">Explore</button>
 <button id="aboutTab" class="nav-tab" aria-controls="hamburgerPanel" aria-expanded="false">About</button>
 <button id="themeToggle" class="nav-tab" aria-label="Toggle dark mode">☾</button>
 </nav>
@@ -778,6 +783,7 @@ footer .footer-line{display:flex;align-items:center;justify-content:center;gap:1
 
 <!-- Species Explorer -->
 <section id="mapTools" aria-label="Bird map and species list">
+<div class="explorer-heading"><h2 id="exploreWorldTitle">EXPLORE</h2></div>
 <div id="mainPanel" class="bird-map-layout">
 <div id="mapStage"><div id="birdGlobe"><svg tabindex="0" role="img" aria-label="Birding globe. Drag to rotate, pinch or use plus and minus to zoom."></svg></div>
 <div id="globeZoom" role="group" aria-label="Globe controls"><button id="globePlus" aria-label="Zoom in">+</button><button id="globeMinus" aria-label="Zoom out">−</button><button id="globeCountry" aria-label="Back to country" title="Back to country" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5 3 11l6 6M3 11h11a6 6 0 0 1 6 6v2"/></svg></button><button id="globeHome" aria-label="Zoom out to the whole globe" title="World view"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18M5 6h14M5 18h14"/></svg></button></div>
@@ -1620,7 +1626,7 @@ $map('exploreTab').onclick=()=>showExplorePanel();
 function renderMapBreadcrumb(){
  $map('globeCountry').hidden=!selectedRegion;const parentLabel='Back to '+(selectedCountry||'country');$map('globeCountry').setAttribute('aria-label',parentLabel);$map('globeCountry').setAttribute('title',parentLabel);
 
- const label=selectedCountry||'World';$map('exploreTab').textContent=label;$map('exploreTab').setAttribute('title',label);$map('exploreTab').setAttribute('aria-label','Explore '+label);
+ $map('exploreTab').textContent='Explore';$map('exploreTab').setAttribute('title','Explore');$map('exploreTab').setAttribute('aria-label','Explore the map');
 
  for(const prefix of ['crumb']){
   $map(prefix+'World').disabled=!selectedCountry;
